@@ -32,4 +32,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "android.arch.paging:runtime:${versions.paging}"
+    implementation "android.arch.paging:rxjava2:${versions.pagingRx}"
 }

@@ -1,4 +1,4 @@
 package ru.demin.paging.adapter
 
-class User(val name: String) {
+class User(val id: Int, val name: String) {
 }
