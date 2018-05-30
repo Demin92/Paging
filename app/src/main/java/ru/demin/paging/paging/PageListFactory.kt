@@ -6,7 +6,8 @@ import java.util.concurrent.Executors
 
 class PageListFactory {
     companion object {
-        private val PAGED_LIST_PAGE_SIZE = 10
+        private const val PAGED_LIST_PAGE_SIZE = 10
+        private const val IS_PLACEHOLDERS_ENABLED = true
     }
 
     fun createPageList(): PagedList<User> {
@@ -19,7 +20,7 @@ class PageListFactory {
     private fun createConfig(): PagedList.Config {
         return PagedList.Config.Builder()
                 .setPageSize(PAGED_LIST_PAGE_SIZE)
-                .setEnablePlaceholders(false)
+                .setEnablePlaceholders(IS_PLACEHOLDERS_ENABLED)
                 .build()
     }
 }
