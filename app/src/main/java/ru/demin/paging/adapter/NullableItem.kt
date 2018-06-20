@@ -5,10 +5,10 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.item_user.view.*
 import ru.demin.paging.R
 
-class User(val name: String) : Item<ViewHolder>() {
+class NullableItem : Item<ViewHolder>() {
     override fun getLayout() = R.layout.item_user
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
-        viewHolder.itemView.item_user_name.text = name
+        viewHolder.itemView.item_user_name.text = "null"
     }
 }
