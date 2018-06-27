@@ -28,5 +28,7 @@ task clean(type: Delete) {
 
 ext.versions = [
         paging : "1.0.0",
-        groupie : "2.1.0"
+        groupie : "2.1.0",
+        rxJava : "2.1.9",
+        rxAndroid : "2.0.2"
 ]
