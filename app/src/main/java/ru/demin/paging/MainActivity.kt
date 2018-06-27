@@ -3,6 +3,7 @@ package ru.demin.paging
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.demin.paging.adapter.User
@@ -12,7 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     private val pageListFactory = PageListFactory()
     private val userAdapter = GroupAdapter<ViewHolder>()
-    private val pagedGroupList = PagedListGroup<User>()
+    private val pagedGroupList = PagedListGroup<Item<ViewHolder>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,15 +1,22 @@
 package ru.demin.paging.storage
 
+import com.xwray.groupie.Item
+import com.xwray.groupie.ViewHolder
+import ru.demin.paging.adapter.Admin
 import ru.demin.paging.adapter.User
 
 class UserStorage {
-    fun loadUsers(startPosition: Int, loadSize: Int): List<User> {
-        val users = arrayListOf<User>()
+    fun loadItems(startPosition: Int, loadSize: Int): List<Item<ViewHolder>> {
+        val users = arrayListOf<Item<ViewHolder>>()
         if (startPosition > 0) {
             Thread.sleep(2000)
         }
         for (i in startPosition..(startPosition + loadSize - 1)) {
-            users.add(User("user $i"))
+            if ( (Math.random() * 5) < 2 ) {
+                users.add(Admin("admin $i"))
+            } else {
+                users.add(User("user $i"))
+            }
         }
         return users
     }

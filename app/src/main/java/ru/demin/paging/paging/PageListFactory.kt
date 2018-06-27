@@ -1,6 +1,8 @@
 package ru.demin.paging.paging
 
 import android.arch.paging.PagedList
+import com.xwray.groupie.Item
+import com.xwray.groupie.ViewHolder
 import ru.demin.paging.adapter.User
 import java.util.concurrent.Executors
 
@@ -9,8 +11,8 @@ class PageListFactory {
         private const val PAGED_LIST_PAGE_SIZE = 10
     }
 
-    fun createPageList(): PagedList<User> {
-        return PagedList.Builder<Int, User>(UserDataSource(), createConfig())
+    fun createPageList(): PagedList<Item<ViewHolder>> {
+        return PagedList.Builder<Int, Item<ViewHolder>>(UserDataSource(), createConfig())
                 .setNotifyExecutor(MainThreadExecutor())
                 .setFetchExecutor(Executors.newSingleThreadExecutor())
                 .build()
