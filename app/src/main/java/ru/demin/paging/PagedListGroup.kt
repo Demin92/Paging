@@ -25,7 +25,7 @@ class PagedListGroup<T : Item<ViewHolder>> : Group, GroupDataObserver {
             groupDataObserver?.onItemMoved(this@PagedListGroup, fromPosition, toPosition)
         }
 
-        override fun onChanged(position: Int, count: Int, payload: Any) {
+        override fun onChanged(position: Int, count: Int, payload: Any?) {
             groupDataObserver?.onItemRangeChanged(this@PagedListGroup, position, count)
         }
     }
