@@ -11,6 +11,7 @@ import ru.demin.paging.adapter.Error
 import ru.demin.paging.adapter.Loading
 import ru.demin.paging.adapter.LoadingState
 import ru.demin.paging.paging.PageListFactory
+import ru.demin.paging.paging.PagedListGroup
 import ru.demin.paging.storage.NetworkStateSubject
 import ru.demin.paging.storage.RetrySubject
 
@@ -37,7 +38,10 @@ class MainActivity : AppCompatActivity() {
                 }
         retrySubject.subscribe()
                 .subscribe {
-                    errorItem = Error { it.invoke() }
+                    errorItem = Error {
+
+
+                        it.invoke() }
                 }
 
     }

@@ -1,4 +1,4 @@
-package ru.demin.paging
+package ru.demin.paging.paging
 
 import android.arch.paging.AsyncPagedListDiffer
 import android.arch.paging.PagedList

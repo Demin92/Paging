@@ -6,7 +6,6 @@ import android.util.Log
 import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import ru.demin.paging.adapter.LoadingState
-import ru.demin.paging.adapter.User
 import ru.demin.paging.storage.NetworkStateSubject
 import ru.demin.paging.storage.RetrySubject
 import ru.demin.paging.storage.UserStorage
@@ -32,7 +31,7 @@ class UserDataSource(private val networkStateSubject: NetworkStateSubject,
                 callback.onResult(it, params.requestedStartPosition)
             }
         }, {
-            retrySubject.onNetworkStateChanged { loadInitial(params, callback) }
+            retrySubject.onRetryStateChanged { loadInitial(params, callback) }
             networkStateSubject.onNetworkStateChanged(LoadingState.ERROR)
         })
     }
@@ -45,7 +44,7 @@ class UserDataSource(private val networkStateSubject: NetworkStateSubject,
                     networkStateSubject.onNetworkStateChanged(LoadingState.LOADED)
                     callback.onResult(it)
                 }, {
-                    retrySubject.onNetworkStateChanged { loadRange(params, callback) }
+                    retrySubject.onRetryStateChanged { loadRange(params, callback) }
                     networkStateSubject.onNetworkStateChanged(LoadingState.ERROR)
                 })
 
