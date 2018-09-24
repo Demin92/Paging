@@ -22,7 +22,8 @@ class UserDataSource(private val networkStateSubject: NetworkStateSubject,
 
     override fun loadInitial(params: LoadInitialParams, callback: LoadInitialCallback<Item<ViewHolder>>) {
         networkStateSubject.onNetworkStateChanged(LoadingState.LOADING)
-        Log.d(LOG_TAG, "loadInitial requestedStartPosition = ${params.requestedStartPosition}, requestedLoadSize = ${params.requestedLoadSize}")
+        Log.d(LOG_TAG, "loadInitial requestedStartPosition = ${params.requestedStartPosition}, requestedLoadSize = ${params.requestedLoadSize}, " +
+                "thread = ${Thread.currentThread().name}")
         userStorage.loadItems(params.requestedStartPosition, params.requestedLoadSize).subscribe({
             networkStateSubject.onNetworkStateChanged(LoadingState.LOADED)
             if (params.placeholdersEnabled) {
@@ -38,7 +39,8 @@ class UserDataSource(private val networkStateSubject: NetworkStateSubject,
 
     override fun loadRange(params: LoadRangeParams, callback: LoadRangeCallback<Item<ViewHolder>>) {
         networkStateSubject.onNetworkStateChanged(LoadingState.LOADING)
-        Log.d(LOG_TAG, "loadRange startPosition = ${params.startPosition}, loadSize = ${params.loadSize}")
+        Log.d(LOG_TAG, "loadRange startPosition = ${params.startPosition}, loadSize = ${params.loadSize}, " +
+                "thread = ${Thread.currentThread().name}")
         userStorage.loadItems(params.startPosition, params.loadSize)
                 .subscribe({
                     networkStateSubject.onNetworkStateChanged(LoadingState.LOADED)

@@ -38,7 +38,10 @@ class MainActivity : AppCompatActivity() {
         user_list.adapter = userAdapter
         userAdapter.add(pagedGroupList)
 
-        pagedGroupList.submitList(pageListFactory.createPageList(networkStateSubject, retrySubject, this))
+
+        pageListFactory.createPageList(networkStateSubject, retrySubject, this).subscribe {
+            pagedGroupList.submitList(it)
+        }
     }
 
     private fun subscribeOnLoadingStateUpdates() {
