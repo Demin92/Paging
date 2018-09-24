@@ -17,7 +17,7 @@ class PageListFactory {
     fun createPageList(networkStateSubject: NetworkStateSubject,
                        retrySubject: RetrySubject,
                        context: Context): PagedList<Item<ViewHolder>> {
-        return PagedList.Builder<Int, Item<ViewHolder>>(UserDataSource(networkStateSubject,retrySubject, context), createConfig())
+        return PagedList.Builder<Int, Item<ViewHolder>>(UserDataSource(networkStateSubject, retrySubject, context), createConfig())
                 .setNotifyExecutor(MainThreadExecutor())
                 .setFetchExecutor(Executors.newSingleThreadExecutor())
                 .build()

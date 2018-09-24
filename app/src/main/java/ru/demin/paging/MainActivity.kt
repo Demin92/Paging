@@ -31,19 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initUi()
-        networkStateSubject.subscribe()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {
-                    handleLoadingState(it)
-                }
-        retrySubject.subscribe()
-                .subscribe {
-                    errorItem = Error {
-
-
-                        it.invoke() }
-                }
-
+        subscribeOnLoadingStateUpdates()
     }
 
     private fun initUi() {
@@ -51,6 +39,21 @@ class MainActivity : AppCompatActivity() {
         userAdapter.add(pagedGroupList)
 
         pagedGroupList.submitList(pageListFactory.createPageList(networkStateSubject, retrySubject, this))
+    }
+
+    private fun subscribeOnLoadingStateUpdates() {
+        networkStateSubject.subscribe()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    handleLoadingState(it)
+                }
+
+        retrySubject.subscribe()
+                .subscribe {
+                    errorItem = Error {
+                        it.invoke()
+                    }
+                }
     }
 
     private fun handleLoadingState(state: LoadingState) {
