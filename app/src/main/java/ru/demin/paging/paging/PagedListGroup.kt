@@ -50,7 +50,9 @@ class PagedListGroup<T : Item<ViewHolder>> : Group, GroupDataObserver {
     }
 
     override fun getItem(position: Int): Item<ViewHolder> {
-        return differ.getItem(position) ?: NullableItem()
+        return differ.getItem(position)?.apply {
+            registerGroupDataObserver(this@PagedListGroup)
+        } ?: NullableItem()
     }
 
     override fun getPosition(item: Item<ViewHolder>): Int {
