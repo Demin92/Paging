@@ -9,5 +9,3 @@
 #### Video
 * [Android Jetpack: manage infinite lists with RecyclerView and Paging (Google I/O '18)](https://www.youtube.com/watch?v=BE5bsyGGLf4)
 * [How to connect Paging Library with Groupie](https://medium.com/@chibatching/how-to-connect-paging-library-with-groupie-f8b4102d59b0)
-
-*не стесняйтесь добавлять свое*
